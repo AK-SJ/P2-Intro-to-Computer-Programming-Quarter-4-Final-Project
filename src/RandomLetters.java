@@ -1,3 +1,4 @@
+import java.awt.Graphics;
 import java.util.Random;
 
 public class RandomLetters {
@@ -12,7 +13,10 @@ public class RandomLetters {
 			
 		}
 		
-		
+		public RandomLetters() {
+			// TODO Auto-generated constructor stub
+		}
+
 		public void fillAlphabet() {
 			
 			for(char l = 'a'; l <= 'z'; l++) { // Fills alphabet with the letters via a for-loop
@@ -30,8 +34,6 @@ public class RandomLetters {
 			
 			return alphabet[randomChar];
 			
-			// Progress, 4/4/2022: Finish figuring out nextInt (done) and finish generation of random character to be used on tile (done).
-			// Progress, 4/5/2022: Figure out how to make generateRandomChar work and edit or create new tile for letter background.
 		}
 		
 		public char getChar() {
@@ -40,11 +42,14 @@ public class RandomLetters {
 			
 		}
 		
-		public static void main(String[] arg) {
-			
-			Tile t = new Tile();
+		public void paint(Graphics g) {
 			
 		}
 		
-			
+		public static void main(String[] arg) {	
+		}
+
+		// Progress, 4/4/2022: Finish figuring out nextInt (done) and finish generation of random character to be used on tile (done).
+		// Progress, 4/5/2022: Figure out how to make generateRandomChar work and edit or create new tile for letter background.
+		
 }
