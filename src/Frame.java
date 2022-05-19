@@ -1,5 +1,4 @@
 import java.awt.Color;
-
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -17,139 +16,110 @@ import javax.swing.Timer;
 
 
 
-public class Frame extends JPanel{
+public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 
-	Tile t = new Tile(200, 200, "hello");
-	RandomLetters r = new RandomLetters();
-	RandomLetters rl = new RandomLetters(/*array with characters*/);
-	// maybe add every letter in the alphabet as pngs and then paint those onto the tile
+	Background b = new Background(0, 0);
 	
-	//JTextField textField = new JTextField();
-	//or you can enter default text into the field
-	//JTextField textField2 = new JTextField("Enter Name")
+	Tile t1 = new Tile(-270, -230, "hello");
+	Tile t2 = new Tile(-270, -80, "hello");
+	Tile t3 = new Tile(-270, 70, "hello");
+	Tile t4 = new Tile(-270, 220, "hello");
+	Tile t5 = new Tile(-270, 370, "hello");
 	
+	Letter l1 = new Letter(2, 5);
+	Letter l2 = new Letter(2, 5);
+	Letter l3 = new Letter(2, 5);
+	Letter l4 = new Letter(2, 5);
+	Letter l5 = new Letter(2, 5);
+	
+	// Maybe add every letter in the alphabet as pngs and then paint those onto the tile
 	
 	public Frame() {
 		
 		JFrame f = new JFrame("Mystery Word Guessing Game & Spelling Bee");
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 		f.setSize(1000,1000);
- 		f.setVisible(true);
+		f.setSize(new Dimension(1000, 1000));
+		f.setBackground(Color.red);
+		f.add(this);
 		f.setResizable(false);
 		f.setLayout(new GridLayout(1,2));
+		f.addMouseListener(this);
+		f.addKeyListener(this);
+		Timer t = new Timer(16, this);
+		t.start();
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		f.setVisible(true);
 		
-	}
-	
-	public void paint(Graphics g) { // The objects paint themselves.
-		t.paint(g);
-	}
-	
-	public void wordEquals() {
-	}
-	
-	public void printWord() {
-		
-		System.out.println(t.getWord());
-		
-	}
-	
-	public String check() {
-		
-		return t.foundMysteryWord();
-		
-	}
-	
-	
-	public static void main(String args[]) {
-		
-		Frame f = new Frame();
 		System.out.println("Updates");
 		
-		/* if() {
-			
-			System.out.println("true");
-			
-		} else {
-			
-			System.out.println("false);
-		
-		} */
-		
-		//let characters = [];
-
-		/* for( let i = 32; i < 127; i++) {
-			 	characters.push( String.fromCharCode(i));
-		}
-		
-		*/
-		
 	}
 	
-/*	@Override
+	public void paint(Graphics g) { 
+		
+		super.paintComponent(g);
+		b.paint(g);
+		t1.paint(g);
+		t2.paint(g);
+		t3.paint(g);
+		t4.paint(g);
+		t5.paint(g);
+ 		
+	}
+	
+	public static void main(String[] arg) {
+		Frame f = new Frame();
+	}
+	
+	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		if(){}
-	
+		
+		/* if(mouseclicked){
+		 l.paint(g);
+		 }
+		*/
+		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-	
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 	
 	@Override
-	public void actionPerformed(ActionEvent arg0) { // Performs the 'action [method] of gravity' on HeLava and SheHydro.
+	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		repaint();
 	}
 
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-	
-		 for(int i = 0; i < characters.length; i++){
-		 	
-		 	if(arg0.getKeyCode() == i){
-		 		System.out.print("characters[i].getChar());
-		 	}
-		 
-		 }
-		
 	}
 	 
-	 
-
 	@Override
 	public void keyReleased(KeyEvent arg0) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub		
 	}
 
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
-		
 	}
 
-	
-*/
 	
 }

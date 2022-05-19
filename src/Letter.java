@@ -5,36 +5,26 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
-public class Tile {
+public class Letter {
 	
 	private Image img;
 	private AffineTransform tx;
-	private String word;
+	private String letter;
 
 	
-	public Tile(int a, int b, String mystery) {
-		
+	public Letter(int a, int b) {		
 		
 		img = getImage("/imgs/Tile.png");
 		tx = AffineTransform.getTranslateInstance(a, b);
 		init(a, b);
 		
-		word = mystery;
-	
-	}
-	
-	public String getWord() {
-		return word;
+		
 	}
 	
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		update();
 		g2.drawImage(img,  tx, null);
-	}
-	
-	public String foundMysteryWord() {
-		return "You Found the Mystery Word! Good job!";
 	}
 	
 	private void update() {
@@ -48,7 +38,7 @@ public class Tile {
 	private Image getImage (String path) {
 		Image tempImage = null;
 		try {
-			URL imageURL = Tile.class.getResource(path);
+			URL imageURL = Letter.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
 			e.printStackTrace();
