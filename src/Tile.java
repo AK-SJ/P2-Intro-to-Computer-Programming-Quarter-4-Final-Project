@@ -33,10 +33,6 @@ public class Tile {
 		g2.drawImage(img,  tx, null);
 	}
 	
-	public String foundMysteryWord() {
-		return "You Found the Mystery Word! Good job!";
-	}
-	
 	private void update() {
 	}
 	

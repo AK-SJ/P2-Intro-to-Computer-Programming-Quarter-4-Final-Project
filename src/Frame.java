@@ -1,4 +1,6 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -9,12 +11,13 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.*;
+import java.awt.event.*;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.Timer;
-
-
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 
@@ -41,22 +44,46 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setBackground(Color.red);
 		f.add(this);
 		f.setResizable(false);
-		f.setLayout(new GridLayout(1,2));
+		f.setLayout(new BorderLayout());
+		
 		f.addMouseListener(this);
 		f.addKeyListener(this);
 		Timer t = new Timer(16, this);
 		t.start();
+
+		JTextField textField = new JTextField();
+		textField.setBounds(10, 10, 300, 100);
+		//textField.setColumns(...); Change font to change height of the textfield, but look into this method and see if you can change width with it.
+		Container pane = f.getContentPane();
+		this.setSize(new Dimension(1000, 1000));
+		pane.add(textField, BorderLayout.SOUTH);
+		f.add(this);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		
-		System.out.println("Updates");
+		System.out.println("");
+		System.out.println("Word Guess Updates:");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		
+		String word = "hello";
+		int x = 0;
+		
+		if(x == 0 && word == "hello") {
+			System.out.println("true");
+		} else {
+			System.out.println("false");
+		}
+		
+		// if the word inputted is a real word, then it equals true;
 		
 	}
 	
 	public void paint(Graphics g) { 
 		
 		super.paintComponent(g);
-		b.paint(g);
+	 	b.paint(g);
 		t1.paint(g);
 		t2.paint(g);
 		t3.paint(g);
@@ -73,7 +100,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		/* if(mouseclicked){
+		/* if(mouseclicked (on Tile)){
 		 l.paint(g);
 		 }
 		*/
