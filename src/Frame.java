@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -20,22 +21,26 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
-
+	
 	Background b = new Background(0, 0);
 	
+	JTextField textField = new JTextField();
+
 	Tile t1 = new Tile(-270, -230, "hello");
 	Tile t2 = new Tile(-270, -80, "hello");
 	Tile t3 = new Tile(-270, 70, "hello");
 	Tile t4 = new Tile(-270, 220, "hello");
 	Tile t5 = new Tile(-270, 370, "hello");
 	
-	Letter l1 = new Letter(2, 5);
-	Letter l2 = new Letter(2, 5);
-	Letter l3 = new Letter(2, 5);
-	Letter l4 = new Letter(2, 5);
-	Letter l5 = new Letter(2, 5);
+	// Maybe add every letter in the alphabet as PNGs and then paint those onto the tile
+	// Edit: I don't need to do this :)
 	
-	// Maybe add every letter in the alphabet as pngs and then paint those onto the tile
+	RandomLetter l1 = new RandomLetter(5, 4);
+	RandomLetter l2 = new RandomLetter(5, 4);
+	RandomLetter l3 = new RandomLetter(5, 4);
+	RandomLetter l4 = new RandomLetter(5, 4);
+	RandomLetter l5 = new RandomLetter(5, 4);
+	
 	
 	public Frame() {
 		
@@ -51,32 +56,40 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		Timer t = new Timer(16, this);
 		t.start();
 
-		JTextField textField = new JTextField();
 		textField.setBounds(10, 10, 300, 100);
-		//textField.setColumns(...); Change font to change height of the textfield, but look into this method and see if you can change width with it.
+		
+		// textField.setColumns(...); Change number of columns to change width of the textField
+		// Look into this method and see if you can change width with it
+		// Edit: doesn't work :/
+		
 		Container pane = f.getContentPane();
 		this.setSize(new Dimension(1000, 1000));
 		pane.add(textField, BorderLayout.SOUTH);
 		f.add(this);
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
+		textField.setFont(new Font("Verdana", Font.BOLD, 39));
 		
 		System.out.println("");
-		System.out.println("Word Guess Updates:");
+		System.out.println("(Word Guess) Updates:");
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
 		
-		String word = "hello";
+	 /* String word = "hello";
 		int x = 0;
 		
 		if(x == 0 && word == "hello") {
+		
 			System.out.println("true");
+		
 		} else {
+		
 			System.out.println("false");
+		
 		}
 		
-		// if the word inputted is a real word, then it equals true;
+		If the word inputted is a real word, then it equals true */
 		
 	}
 	
@@ -89,6 +102,12 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t3.paint(g);
 		t4.paint(g);
 		t5.paint(g);
+		
+		g.drawString("A", 58, 80);
+		g.drawString("B", 58, 230);
+		g.drawString("C", 58, 380);
+		g.drawString("D", 58, 530);
+		g.drawString("E", 58, 680);
  		
 	}
 	
@@ -98,12 +117,39 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
+		
 		// TODO Auto-generated method stub
 		
-		/* if(mouseclicked (on Tile)){
+		System.out.println("Here"); // Checks to make sure it "fires"
+		
+		/*
+		if(x == 1) {
+			textField.setText(textField.getText() + "A");
+		}
+		
+		if(x == 2) {
+			//textField.setText(textField.getText() + "B");
+		}
+		
+		if(x == 3) {
+			//textField.setText(textField.getText() + "C");
+		}
+		
+		if(x == 4) {
+			//textField.setText(textField.getText() + "D");
+		}
+		
+		if(x == 5) {
+			textField.setText(textField.getText() + "E");
+		}
+		
+		/*if(t1.mouseClicked) {
+			textField.
+		}
+		
+		if(){
 		 l.paint(g);
-		 }
-		*/
+		} */
 		
 	}
 
@@ -146,6 +192,14 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		
+		// Enter to enter guess
+		
+		if(arg0.getKeyCode() == 10) {
+			
+		}
+		
+		
 	}
 
 	
