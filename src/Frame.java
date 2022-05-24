@@ -19,6 +19,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import java.util.Random;
 
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
@@ -26,11 +27,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	
 	JTextField textField = new JTextField();
 
-	Tile t1 = new Tile(-270, -230, "hello");
-	Tile t2 = new Tile(-270, -80, "hello");
-	Tile t3 = new Tile(-270, 70, "hello");
-	Tile t4 = new Tile(-270, 220, "hello");
-	Tile t5 = new Tile(-270, 370, "hello");
+	Tile t1 = new Tile(-270, -230);
+	Tile t2 = new Tile(-270, -80);
+	Tile t3 = new Tile(-270, 70);
+	Tile t4 = new Tile(-270, 220);
+	Tile t5 = new Tile(-270, 370);
 	
 	// Maybe add every letter in the alphabet as PNGs and then paint those onto the tile
 	// Edit: I don't need to do this :)
@@ -41,10 +42,13 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	RandomLetter l4 = new RandomLetter(5, 4);
 	RandomLetter l5 = new RandomLetter(5, 4);
 	
+	Random r = new Random();
+	char c = (char)(r.nextInt(26) + 'a');
+	
 	
 	public Frame() {
 		
-		JFrame f = new JFrame("Mystery Word Guessing Game & Spelling Bee");
+		JFrame f = new JFrame("Mystery Word Guessing Game");
 		f.setSize(new Dimension(1000, 1000));
 		f.setBackground(Color.red);
 		f.add(this);
@@ -71,7 +75,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		textField.setFont(new Font("Verdana", Font.BOLD, 39));
 		
 		System.out.println("");
-		System.out.println("(Word Guess) Updates:");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("!!!Word Length is ALWAYS 5 Letters!!!");
+		System.out.println("Even if the word isn't the right guess, the system will still acknowledge");
+		System.out.println("the existence of the word by painting it onto the JFrame");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		System.out.println("Updates:");
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
@@ -120,28 +132,29 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		// TODO Auto-generated method stub
 		
-		System.out.println("Here"); // Checks to make sure it "fires"
+		System.out.println("Here (Does Fire)"); // Checks to make sure it "fires"
 		
-		/*
-		if(x == 1) {
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 50 && arg0.getYOnScreen() < 135) {
 			textField.setText(textField.getText() + "A");
 		}
 		
-		if(x == 2) {
-			//textField.setText(textField.getText() + "B");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 200 && arg0.getYOnScreen() < 285) {
+			textField.setText(textField.getText() + "B");
 		}
 		
-		if(x == 3) {
-			//textField.setText(textField.getText() + "C");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 &&  arg0.getYOnScreen() > 350 && arg0.getXOnScreen() < 435) {
+			textField.setText(textField.getText() + "C");
 		}
 		
-		if(x == 4) {
-			//textField.setText(textField.getText() + "D");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 500 && arg0.getXOnScreen() < 585) {
+			textField.setText(textField.getText() + "D");
 		}
 		
-		if(x == 5) {
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 650 && arg0.getXOnScreen() < 735) {
 			textField.setText(textField.getText() + "E");
 		}
+		
+		// FIX THE MARGINS
 		
 		/*if(t1.mouseClicked) {
 			textField.
@@ -195,7 +208,10 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		// Enter to enter guess
 		
-		if(arg0.getKeyCode() == 10) {
+		if(arg0.getKeyCode() == 10 /*Also if a word is inputted, so this could be an outer if-statement*/) {
+			
+			System.out.println("Here (Entering Word Works)");
+			// Draw String of the word onto the JFrame
 			
 		}
 		

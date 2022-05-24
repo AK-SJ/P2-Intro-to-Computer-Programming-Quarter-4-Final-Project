@@ -9,22 +9,15 @@ public class Tile {
 	
 	private Image img;
 	private AffineTransform tx;
-	private String word;
 
 	
-	public Tile(int a, int b, String mystery) {
+	public Tile(int a, int b) {
 		
 		
 		img = getImage("/imgs/Tile.png");
 		tx = AffineTransform.getTranslateInstance(a, b);
 		init(a, b);
-		
-		word = mystery;
 	
-	}
-	
-	public String getWord() {
-		return word;
 	}
 	
 	public void paint(Graphics g) {

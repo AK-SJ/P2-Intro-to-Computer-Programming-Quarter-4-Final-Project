@@ -16,7 +16,6 @@ public class RandomLetter {
 		Random r = new Random();
 		char c = (char)(r.nextInt(26) + 'a');
 		
-		
 		img = getImage("/imgs/Tile.png");
 		tx = AffineTransform.getTranslateInstance(a, b);
 		init(a, b);
