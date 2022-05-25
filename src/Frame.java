@@ -42,8 +42,18 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	RandomLetter l4 = new RandomLetter(5, 4);
 	RandomLetter l5 = new RandomLetter(5, 4);
 	
-	Random r = new Random();
+	/* Random r = new Random();
 	char c = (char)(r.nextInt(26) + 'a');
+	//String s = toString(c);
+	String lowercase = String.valueOf(c);
+	String randomLetter = lowercase.toUpperCase(); */
+	String s = "test";
+	
+	String o = "";
+	String t = "";
+	String th = "";
+	String fo = "";
+	String fi = "";
 	
 	
 	public Frame() {
@@ -77,9 +87,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
-		System.out.println("!!!Word Length is ALWAYS 5 Letters!!!");
+		System.out.println("!!!Mystery Word Length is ALWAYS 5 Letters!!!");
+		System.out.println("To make it aesthetically pleasing, the keyboard is in uppercase.");
 		System.out.println("Even if the word isn't the right guess, the system will still acknowledge");
 		System.out.println("the existence of the word by painting it onto the JFrame");
+		System.out.println("To insert a guess, press ENTER");
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
@@ -105,6 +117,19 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 	
+	public String generateRandomLetter() {
+		
+		Random r = new Random();
+		char c = (char)(r.nextInt(26) + 'a');
+		//String s = toString(c);
+		String lowercase = String.valueOf(c);
+		String randomLetter = lowercase.toUpperCase();
+		
+		return randomLetter;
+		
+	}
+	
+	
 	public void paint(Graphics g) { 
 		
 		super.paintComponent(g);
@@ -115,12 +140,43 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		t4.paint(g);
 		t5.paint(g);
 		
-		g.drawString("A", 58, 80);
-		g.drawString("B", 58, 230);
-		g.drawString("C", 58, 380);
-		g.drawString("D", 58, 530);
-		g.drawString("E", 58, 680);
- 		
+		for(int i = 0; i < 6; i++) {
+			
+			if(i == 1) {
+				o = generateRandomLetter();
+				g.drawString(o, 58, 80);
+			}
+			
+			if(i == 2) {
+				t = generateRandomLetter();
+				g.drawString(t, 58, 230);
+			}
+			
+			if(i == 3) {
+				th = generateRandomLetter();
+				g.drawString(th, 58, 380);
+			}
+			
+			if(i == 4) {
+				fo = generateRandomLetter();
+				g.drawString(fo, 58, 530);
+			}
+
+			if(i == 5) {
+				fi = generateRandomLetter();
+				g.drawString(fi, 58, 680);
+			}
+			
+		}
+		
+		/*
+		g.drawString(randomLetter, 58, 80);
+		g.drawString(randomLetter, 58, 230);
+		g.drawString(randomLetter, 58, 380);
+		g.drawString(randomLetter, 58, 530);
+		g.drawString(randomLetter, 58, 680);
+		*/
+		
 	}
 	
 	public static void main(String[] arg) {
@@ -135,26 +191,25 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("Here (Does Fire)"); // Checks to make sure it "fires"
 		
 		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 50 && arg0.getYOnScreen() < 135) {
-			textField.setText(textField.getText() + "A");
+			textField.setText(textField.getText() + o);
 		}
 		
 		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 200 && arg0.getYOnScreen() < 285) {
-			textField.setText(textField.getText() + "B");
+			textField.setText(textField.getText() + t);
 		}
 		
-		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 &&  arg0.getYOnScreen() > 350 && arg0.getXOnScreen() < 435) {
-			textField.setText(textField.getText() + "C");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 &&  arg0.getYOnScreen() > 350 && arg0.getYOnScreen() < 435) {
+			textField.setText(textField.getText() + th);
 		}
 		
-		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 500 && arg0.getXOnScreen() < 585) {
-			textField.setText(textField.getText() + "D");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 500 && arg0.getYOnScreen() < 585) {
+			textField.setText(textField.getText() + fo);
 		}
 		
-		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 650 && arg0.getXOnScreen() < 735) {
-			textField.setText(textField.getText() + "E");
+		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 650 && arg0.getYOnScreen() < 735) {
+			textField.setText(textField.getText() + fi);
 		}
-		
-		// FIX THE MARGINS
+		// FIX THE MARGINS (fixed)
 		
 		/*if(t1.mouseClicked) {
 			textField.
