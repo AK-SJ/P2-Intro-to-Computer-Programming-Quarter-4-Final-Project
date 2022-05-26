@@ -55,6 +55,11 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	String fo = "";
 	String fi = "";
 	
+	String mysteryWord1 = "ERROR";
+	String mysteryWord2 = "CLASS";
+	String mysteryWord3 = "INDEX";
+	String mysteryWord4 = "SUPER";
+	String mysteryWord5 = "WHILE";
 	
 	public Frame() {
 		
@@ -87,20 +92,36 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
+		
 		System.out.println("!!!Mystery Word Length is ALWAYS 5 Letters!!!");
+		System.out.println("The Mystery Word is related to JAVA, and there");
+		System.out.println("are five possible words you can win with");
+		
+		System.out.println("");
+		
 		System.out.println("To make it aesthetically pleasing, the keyboard is in uppercase.");
+		System.out.println("If you can't make a word out of the letters provided,");
+		System.out.println("rerun until viable letters are created.");
 		System.out.println("Even if the word isn't the right guess, the system will still acknowledge");
 		System.out.println("the existence of the word by painting it onto the JFrame");
+		
+		System.out.println("");
+		
 		System.out.println("To insert a guess, press ENTER");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
-		System.out.println("Updates:");
+		
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
 		
-	 /* String word = "hello";
+		System.out.println("Updates:");
+		
+		System.out.println("");
+		System.out.println("");
+		System.out.println("");
+		
+	    /*
+
+	    String word = "hello";
 		int x = 0;
 		
 		if(x == 0 && word == "hello") {
@@ -113,7 +134,15 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		}
 		
-		If the word inputted is a real word, then it equals true */
+		If the word inputted is a real word, then it equals true
+		
+		Implement a spell-checker to spell-check the word that is put in.
+		
+		If it's not a word, underline it with a red squiggly
+		
+		If it is, don't.
+		
+		*/
 		
 	}
 	
@@ -244,7 +273,9 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
+		
 		repaint();
+		
 	}
 
 	@Override
@@ -261,17 +292,27 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
 		
-		// Enter to enter guess
-		
 		if(arg0.getKeyCode() == 10 /*Also if a word is inputted, so this could be an outer if-statement*/) {
 			
-			System.out.println("Here (Entering Word Works)");
+			System.out.println("Here (Entering Word Works)"); // Test
 			// Draw String of the word onto the JFrame
 			
 		}
 		
-		
 	}
 
+	// THINGS LEFT TO DO:
+	
+	// 1. Fix the randomizer
+	
+	// 2. Spell-Check (this might be obsolete since the word has been limited to JAVA and Computer Science
+	
+	// 3. ENTER on the Keyboard
+	
+	// 4. If the word is not the right answer, but is still a word, paint it onto the JFrame and maybe print it out onto the console
+	
+	// 5. If the word is the right answer, then paint it onto the JFrame with a win message
+	
+	
 	
 }
