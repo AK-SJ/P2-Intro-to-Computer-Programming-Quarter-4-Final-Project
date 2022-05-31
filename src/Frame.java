@@ -21,11 +21,47 @@ import javax.swing.JTextField;
 import javax.swing.Timer;
 import java.util.Random;
 
+
+
+
+
+/** RUN FIRST
+ * 
+ * 
+ * 
+ * READ THE CONSOLE FOR DIRECTIONS
+ * 
+ * 
+ * 
+ * AS STARTED LATER, IGNORE THE TILES TO THE TOP LEFT; YOU CAN UTILIZE ANY LETTER ON THE KEYBOARD
+ * 
+ * 
+ * 
+ * DON'T LOOK AT THE STRING DECLARATIONS (AKA DON'T CHEAT)
+ * 
+ * 
+ * 
+ * REMEMBER, IT'S ALL COMPUTER SCIENCE WORDS
+ * 
+ * 
+ * 
+ * **/
+
+
+
+
+
 public class Frame extends JPanel implements ActionListener, MouseListener, KeyListener {
 	
 	Background b = new Background(0, 0);
 	
 	JTextField textField = new JTextField();
+	
+	boolean help;
+	boolean help2;
+	boolean help3;
+	boolean help4;
+	boolean help5;
 
 	Tile t1 = new Tile(-270, -230);
 	Tile t2 = new Tile(-270, -80);
@@ -42,12 +78,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	RandomLetter l4 = new RandomLetter(5, 4);
 	RandomLetter l5 = new RandomLetter(5, 4);
 	
+	Tile t6 = new Tile(270, -200);
+	Tile t7 = new Tile(270, -50);
+	Tile t8 = new Tile(270, 100);
+	Tile t9 = new Tile(270, 250);
+	Tile t10 = new Tile(270, 400);
+	
 	/* Random r = new Random();
 	char c = (char)(r.nextInt(26) + 'a');
 	//String s = toString(c);
 	String lowercase = String.valueOf(c);
 	String randomLetter = lowercase.toUpperCase(); */
 	String s = "test";
+	
+	String guess = "";
 	
 	String o = "";
 	String t = "";
@@ -61,6 +105,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	String mysteryWord4 = "SUPER";
 	String mysteryWord5 = "WHILE";
 	
+	Timer time = new Timer(16, this);
 	public Frame() {
 		
 		JFrame f = new JFrame("Mystery Word Guessing Game");
@@ -71,9 +116,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setLayout(new BorderLayout());
 		
 		f.addMouseListener(this);
-		f.addKeyListener(this);
-		Timer t = new Timer(16, this);
-		t.start();
+ 
 
 		textField.setBounds(10, 10, 300, 100);
 		
@@ -88,7 +131,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		f.setVisible(true);
 		textField.setFont(new Font("Verdana", Font.BOLD, 39));
-		
+		textField.addKeyListener(this);
 		System.out.println("");
 		System.out.println("");
 		System.out.println("");
@@ -104,6 +147,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("rerun until viable letters are created.");
 		System.out.println("Even if the word isn't the right guess, the system will still acknowledge");
 		System.out.println("the existence of the word by painting it onto the JFrame");
+		System.out.println("IGNORE THE TILES ON THE FAR LEFT; THEY WERE ORIGINALLY GOING TO BE USED");
+		System.out.println("BUT COMPLICATIONS AROSE SO THEY'RE NOW JUST THERE FOR AESTHETIC PURPOSES");
 		
 		System.out.println("");
 		
@@ -119,8 +164,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("");
 		System.out.println("");
 		
-	    /*
-
+		/* Spellchecker [2.] Spell-Check (this might be obsolete since the word has been limited to JAVA and Computer Science)
+		
 	    String word = "hello";
 		int x = 0;
 		
@@ -130,8 +175,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 		} else {
 		
-			System.out.println("false");
-		
+			System.out.println("false");	
+			
 		}
 		
 		If the word inputted is a real word, then it equals true
@@ -143,7 +188,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		If it is, don't.
 		
 		*/
-		
+	 	time.start();
+
 	}
 	
 	public String generateRandomLetter() {
@@ -158,10 +204,20 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		
 	}
 	
+	public int getLength() {
+		
+		String text = textField.getText();
+		guess = textField.getText();
+		
+		return text.length();
+		
+	}
+	
 	
 	public void paint(Graphics g) { 
 		
 		super.paintComponent(g);
+		
 	 	b.paint(g);
 		t1.paint(g);
 		t2.paint(g);
@@ -194,7 +250,51 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 			if(i == 5) {
 				fi = generateRandomLetter();
 				g.drawString(fi, 58, 680);
+			}			
+			
+			if(help == true) {
+				
+				t6.paint(g);
+				g.drawString("Mystery Word 1!", 560, 110);
+				
 			}
+			
+			if(help2 == true) {
+				
+				t7.paint(g);
+				g.drawString("Mystery Word 2!", 560, 260);
+				
+			}
+
+			if(help3 == true) {
+				
+				t8.paint(g);
+				g.drawString("Mystery Word 3!", 560, 410);
+	
+			}
+
+			if(help4 == true) {
+	
+				t9.paint(g);
+				g.drawString("Mystery Word 4!", 560, 560);
+	
+			}
+
+			if(help5 == true) {
+	
+				t10.paint(g);
+				g.drawString("Mystery Word 5!", 560, 710);
+	
+			}
+			
+	/*		(270, -200);
+			(270, -50);
+			(270, 100);
+			(270, 250);
+			(270, 400);		*/
+			
+			
+			
 			
 		}
 		
@@ -238,7 +338,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 650 && arg0.getYOnScreen() < 735) {
 			textField.setText(textField.getText() + fi);
 		}
-		// FIX THE MARGINS (fixed)
+		
+		// FIXED THE MARGINS
 		
 		/*if(t1.mouseClicked) {
 			textField.
@@ -275,7 +376,7 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		// TODO Auto-generated method stub
 		
 		repaint();
-		
+		//time.stop();
 	}
 
 	@Override
@@ -287,32 +388,68 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 	public void keyReleased(KeyEvent arg0) {
 		// TODO Auto-generated method stub		
 	}
-
+	
 	@Override
 	public void keyTyped(KeyEvent arg0) {
 		// TODO Auto-generated method stub
+		System.out.println(arg0.getKeyCode()+"key");
 		
-		if(arg0.getKeyCode() == 10 /*Also if a word is inputted, so this could be an outer if-statement*/) {
-			
-			System.out.println("Here (Entering Word Works)"); // Test
-			// Draw String of the word onto the JFrame
-			
-		}
+		if(getLength() == 5) {
 		
-	}
+			if(arg0.getKeyCode() == 0 /*Also if a word is inputted, so this could be an outer if-statement*/) {
+			
+					System.out.println("Here (Entering Word Works)"); // Test
+				
+					if(guess.equals(mysteryWord1)) {
+						
+						help = true;
+						
+					}
+					
+					if(guess.equals(mysteryWord2)) {
+						
+						help2 = true;
+						
+					}
 
-	// THINGS LEFT TO DO:
+					if(guess.equals(mysteryWord3)) {
+			
+						help3 = true;
+			
+					}
+
+					if(guess.equals(mysteryWord4)) {
+			
+						help4 = true;
+			
+					}
+
+					if(guess.equals(mysteryWord5)) {
+			
+						help5 = true;
+			
+					} else {
+						
+						System.out.println(guess);
+						
+					}
+					
+					// Draw String of the word onto the JFrame
+			
+			}
+		
+		}
+	
+	}
+		
+	// Things Left To Do:
 	
 	// 1. Fix the randomizer
 	
-	// 2. Spell-Check (this might be obsolete since the word has been limited to JAVA and Computer Science
-	
 	// 3. ENTER on the Keyboard
 	
-	// 4. If the word is not the right answer, but is still a word, paint it onto the JFrame and maybe print it out onto the console
+	// 4. If the word is not the right answer, print it out onto the console
 	
 	// 5. If the word is the right answer, then paint it onto the JFrame with a win message
-	
-	
 	
 }
