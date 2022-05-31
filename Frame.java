@@ -135,10 +135,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		System.out.println("");
 		System.out.println("");
 		
-		// Spellchecker [2.] Spell-Check (this might be obsolete since the word has been limited to JAVA and Computer Science)
+		/* Spellchecker [2.] Spell-Check (this might be obsolete since the word has been limited to JAVA and Computer Science)
 		
-		
-	    /*
 	    String word = "hello";
 		int x = 0;
 		
@@ -298,7 +296,8 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 		if(arg0.getXOnScreen() > 28 && arg0.getXOnScreen() < 103 && arg0.getYOnScreen() > 650 && arg0.getYOnScreen() < 735) {
 			textField.setText(textField.getText() + fi);
 		}
-		// FIX THE MARGINS (fixed)
+		
+		// FIXED THE MARGINS
 		
 		/*if(t1.mouseClicked) {
 			textField.
@@ -391,7 +390,6 @@ public class Frame extends JPanel implements ActionListener, MouseListener, KeyL
 						System.out.println(guess);
 						
 					}
-					
 					
 					// Draw String of the word onto the JFrame
 			
